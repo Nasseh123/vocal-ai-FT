@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit{
   conversation: { user: string, bot: string }[] = [];
   isListening: boolean = false;
   isReplying: boolean = false;
+  screenView ='simple'
+  showWelcome = true
   msg= ""
   constructor(private speechService: SpeechService) {}
   ngOnInit(): void {
@@ -26,7 +28,9 @@ export class HomeComponent implements OnInit{
   
     }
 this.getallConversations()
-    
+    setTimeout(() => {
+      this.showWelcome = false
+    }, 4000);
   }
   getallConversations(){
     this.conversation  = []
@@ -57,9 +61,11 @@ this.getallConversations()
   
           console.log("AI response: ", aiResponse);
           this.speechService.speakOut(aiResponse);
+
+          this.isReplying = false;
           
           this.conversation[this.conversation.length - 1]['bot'] = aiResponse;
-          this.isReplying = false;
+
         },(error)=>{
           this.isListening = false;
           this.isReplying = false;

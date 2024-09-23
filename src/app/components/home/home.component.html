@@ -5,13 +5,11 @@
 
 
     
-
-    <div class="container">
+   
+    <div class="container" style="padding-top: 230px;" >
         <div class="row">
             <div class="col-md-6 mx-auto">
-                
-      
-                          
+                @if(showWelcome){   
                              <div class="wrapper">
                                 <ul class="dynamic-txts">
                                     <li><span>Welcome</span></li>
@@ -19,13 +17,43 @@
                                     <li><span>VocalAI</span></li>
                                 </ul>
                             </div>
-              
+                        }
             </div>
         </div>
     </div>
+@if (screenView=='simple') {
+    @if (isListening) {
+        <div class="speech-circles">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        }
+        <!-- Show animated circles when BOT is speaking -->
+        @else if (isReplying) {
 
-    
-    <div class="techwave_fn_font">
+        <div class="speech-circles">
+            <div class="circleBot"></div>
+            <div class="circleBot"></div>
+            <div class="circleBot"></div>
+            <div class="circleBot"></div>
+        </div>
+        }@else {
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <button class="button-36" role="button" (click)="startConversation()"
+                        [disabled]="isListening || isReplying">Talk to ME</button>
+                      
+                    </div>
+                </div>
+            </div>            
+
+        }
+}@else{
+    <div class="techwave_fn_font" >
         <a class="font__closer_link fn__icon_button" href="#"><img src="svg/close.svg" alt="" class="fn__svg"></a>
         <div class="font__closer"></div>
         <div class="font__dialog">
@@ -47,8 +75,10 @@
         </div>
     </div>
 
-
-    <!-- MAIN WRAPPER -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                 <!-- MAIN WRAPPER -->
     <div class="techwave_fn_wrapper fn__has_sidebar">
         <div class="techwave_fn_wrap">
 
@@ -70,7 +100,7 @@
                             <div class="fn__title_holder">
                                 <div class="container">
                                     <!-- Active chat title -->
-                                    <h1 class="title">Vocal AI</h1>
+                                    <!-- <h1 class="title">Vocal AI</h1> -->
                                     <!-- !Active chat title -->
                                 </div>
                             </div>
@@ -131,8 +161,6 @@
                                         </div>
                                         }
                                         <!-- Show animated circles when BOT is speaking -->
-
-
                                         @else if (isReplying) {
 
                                         <div class="speech-circles">
@@ -283,7 +311,33 @@
 
 
         </div>
-    </div>
+    </div>   
+      </div>
+      </div>
+      </div>
+}
+    
+   
+
 
 
 </div>
+
+
+<footer id="footer">
+    <div class="container" style="padding-top: 230px;margin: 50px;">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <nav class="nav nav-pills flex-column flex-sm-row">
+                    <a class="flex-sm-fill text-sm-center nav-link "
+                    style="cursor: pointer;"
+                    [ngClass]="screenView=='simple'?'active':''" aria-current="page" (click)="screenView='simple'">Simple view</a>
+                    <a class="flex-sm-fill text-sm-center nav-link"
+                    style="cursor: pointer;"
+                    [ngClass]="screenView!='simple'?'active':''"  (click)="screenView='advanced'">Advanced view</a>
+
+                </nav>
+                </div>
+                </div>
+                </div>
+</footer>

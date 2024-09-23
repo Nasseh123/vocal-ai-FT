@@ -100,6 +100,11 @@ startListening(
     utterance.voice = voices[1]
     utterance.onend = () => {
       console.log('Speech has finished speaking.');
+      
+      this.ngZone.run(() => {
+
+      });
+
     };
 
     utterance.onerror = (event) => {
