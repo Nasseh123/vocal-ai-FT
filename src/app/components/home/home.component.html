@@ -1,0 +1,289 @@
+
+<div class="container">
+    <h1>VocalAI</h1>
+
+
+
+    
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                
+      
+                          
+                             <div class="wrapper">
+                                <ul class="dynamic-txts">
+                                    <li><span>Welcome</span></li>
+                                    <li><span>to</span></li>
+                                    <li><span>VocalAI</span></li>
+                                </ul>
+                            </div>
+              
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="techwave_fn_font">
+        <a class="font__closer_link fn__icon_button" href="#"><img src="svg/close.svg" alt="" class="fn__svg"></a>
+        <div class="font__closer"></div>
+        <div class="font__dialog">
+            <h3 class="title">Font Options</h3>
+            <label for="font_size">Font Size</label>
+            <select id="font_size">
+                <option value="10">10 px</option>
+                <option value="12">12 px</option>
+                <option value="14">14 px</option>
+                <option value="16" selected>16 px</option>
+                <option value="18">18 px</option>
+                <option value="20">20 px</option>
+                <option value="22">22 px</option>
+                <option value="24">24 px</option>
+                <option value="26">26 px</option>
+                <option value="28">28 px</option>
+            </select>
+            <a href="#" class="apply techwave_fn_button"><span>Apply</span></a>
+        </div>
+    </div>
+
+
+    <!-- MAIN WRAPPER -->
+    <div class="techwave_fn_wrapper fn__has_sidebar">
+        <div class="techwave_fn_wrap">
+
+
+            <!-- CONTENT -->
+            <div class="techwave_fn_content">
+
+                <div class="techwave_fn_page">
+
+                    <!-- AI Chat Bot Page -->
+                    <div class="techwave_fn_aichatbot_page fn__chatbot">
+
+                        <div class="chat__page">
+
+                            <div class="font__trigger">
+                                <span></span>
+                            </div>
+
+                            <div class="fn__title_holder">
+                                <div class="container">
+                                    <!-- Active chat title -->
+                                    <h1 class="title">Vocal AI</h1>
+                                    <!-- !Active chat title -->
+                                </div>
+                            </div>
+
+                            <div class="container">
+                                <div class="chat__list">
+
+                                    <div id="chat0" class="chat__item"></div>
+
+                                    <div class="chat__item active" id="chat1">
+
+
+
+
+                                        @for (convo of conversation; track convo.user) {
+                                        <div class="chat__box your__chat">
+                                            <div class="author"><span>You</span></div>
+                                            <div class="chat">
+                                                <p>{{ convo.user }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="chat__box bot__chat">
+                                            <div class="author"><span>Bot</span></div>
+                                            <div class="chat">
+                                                <p> {{convo.bot}}</p>
+                                            </div>
+                                        </div>
+                                        }
+
+                                    </div>
+
+                                    <div class="chat__item" id="chat2"></div>
+
+                                    <div class="chat__item" id="chat3"></div>
+
+                                    <div class="chat__item" id="chat4"></div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="chat__comment">
+                                <div class="container">
+                                    <div class="fn__chat_comment">
+                                        <div class="new__chat">
+                                            <p>Ask it questions, engage in discussions, or simply enjoy a friendly chat.
+                                            </p>
+                                        </div>
+                                        <!-- Show animated circles when user is speaking -->
+
+
+                                        @if (isListening) {
+                                        <div class="speech-circles">
+                                            <div class="circle"></div>
+                                            <div class="circle"></div>
+                                            <div class="circle"></div>
+                                            <div class="circle"></div>
+                                        </div>
+                                        }
+                                        <!-- Show animated circles when BOT is speaking -->
+
+
+                                        @else if (isReplying) {
+
+                                        <div class="speech-circles">
+                                            <div class="circleBot"></div>
+                                            <div class="circleBot"></div>
+                                            <div class="circleBot"></div>
+                                            <div class="circleBot"></div>
+                                        </div>
+                                        }@else {
+                                        <button class="button-36" role="button" (click)="startConversation()"
+                                            [disabled]="isListening || isReplying">Talk to ME</button>
+
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="chat__sidebar">
+                            <div class="sidebar_header">
+                                <a href="#chat0" class="fn__new_chat_link">
+                                    <span class="icon"></span>
+                                    <span class="text">New Chat</span>
+                                </a>
+                            </div>
+                            <div class="sidebar_content">
+                                <div class="chat__group new">
+                                    <h2 class="group__title">Today</h2>
+                                    <ul class="group__list">
+                                        <li class="group__item">
+                                            <div class="fn__chat_link active" href="#chat1">
+                                                <span class="text">Vocal AI</span>
+                                                <input type="text" value="Vocal AI">
+                                                <span class="options">
+                                                    <button class="trigger"><span></span></button>
+                                                    <span class="options__popup">
+                                                        <span class="options__list">
+                                                            <button class="edit">Edit</button>
+                                                            <button class="delete">Delete</button>
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                                <span class="save_options">
+                                                    <button class="save">
+                                                        <img src="svg/check.svg" alt="" class="fn__svg">
+                                                    </button>
+                                                    <button class="cancel">
+                                                        <img src="svg/close.svg" alt="" class="fn__svg">
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="group__item">
+                                            <div class="fn__chat_link" href="#chat2">
+                                                <span class="text">Essay: Marketing</span>
+                                                <input type="text" value="Essay: Marketing">
+                                                <span class="options">
+                                                    <button class="trigger"><span></span></button>
+                                                    <span class="options__popup">
+                                                        <span class="options__list">
+                                                            <button class="edit">Edit</button>
+                                                            <button class="delete">Delete</button>
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                                <span class="save_options">
+                                                    <button class="save">
+                                                        <img src="svg/check.svg" alt="" class="fn__svg">
+                                                    </button>
+                                                    <button class="cancel">
+                                                        <img src="svg/close.svg" alt="" class="fn__svg">
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="group__item">
+                                            <div class="fn__chat_link" href="#chat3">
+                                                <span class="text">Future of Social Media</span>
+                                                <input type="text" value="Future of Social Media">
+                                                <span class="options">
+                                                    <button class="trigger"><span></span></button>
+                                                    <span class="options__popup">
+                                                        <span class="options__list">
+                                                            <button class="edit">Edit</button>
+                                                            <button class="delete">Delete</button>
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                                <span class="save_options">
+                                                    <button class="save">
+                                                        <img src="svg/check.svg" alt="" class="fn__svg">
+                                                    </button>
+                                                    <button class="cancel">
+                                                        <img src="svg/close.svg" alt="" class="fn__svg">
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="group__item">
+                                            <div class="fn__chat_link" href="#chat4">
+                                                <span class="text">Business Ideas</span>
+                                                <input type="text" value="Business Ideas">
+                                                <span class="options">
+                                                    <button class="trigger"><span></span></button>
+                                                    <span class="options__popup">
+                                                        <span class="options__list">
+                                                            <button class="edit">Edit</button>
+                                                            <button class="delete">Delete</button>
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                                <span class="save_options">
+                                                    <button class="save">
+                                                        <img src="svg/check.svg" alt="" class="fn__svg">
+                                                    </button>
+                                                    <button class="cancel">
+                                                        <img src="svg/close.svg" alt="" class="fn__svg">
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <footer class="techwave_fn_footer">
+                    <div class="techwave_fn_footer_content">
+                        <div class="copyright">
+                            <p>2024© Vocal AI</p>
+                        </div>
+                        <div class="menu_items">
+                            <ul>
+                                <li><a >Terms of Service</a></li>
+                                <li><a >Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>
